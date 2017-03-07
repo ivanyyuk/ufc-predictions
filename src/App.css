@@ -30,6 +30,21 @@ body {
 
 }
 img {
-  max-width: 100%;
-  height: auto;
+  max-width: 60%;
+}
+
+.versus-page{
+  height: 80%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+img.versus-page {
+  align-self:center;
+}
+
+.fighter {
+  justify-content:center;
 }

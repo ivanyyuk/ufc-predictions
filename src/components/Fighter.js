@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default ({name, record, weightClass, thumbnailUrl }) => 
+export default ({name, record, weightClass, imgUrl }) => 
   <div className='fighter'>
     <div>
-      <img src={thumbnailUrl} />
+      <img src={imgUrl} />
       <br />
       <span>{name}</span>
       <br />
@@ -11,5 +11,5 @@ export default ({name, record, weightClass, thumbnailUrl }) =>
       <br />
       <span>{weightClass}</span>
     </div>
-  </div>
+  </div>;
 

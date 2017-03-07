@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ReactSwipe from 'react-swipe';
+import Fighter from '../components/Fighter';
 
 class SingleEvent extends React.Component {
   constructor(){
@@ -21,13 +22,19 @@ class SingleEvent extends React.Component {
 
   render() {
     return(
-        <ReactSwipe key={this.state.fights.length} swipeOptions={{continuos: true}}>
+      <ReactSwipe key={this.state.fights.length} swipeOptions={{continuos: true}}>
         {
           this.state.fights.map((fight,index) => (
-            <div key={index}>
-              <p>{fight[0].first_name} {fight[0].nickname} {fight[0].last_name}</p>
+            <div key={index} className='versus-page'>
+              <Fighter name={`${fight[0].first_name} ${fight[0].last_name}`}
+                record={`${fight[0].wins}-${fight[0].losses}-${fight[0].draws}`}
+                imgUrl={fight[0].profile_image} />
               <br />
-              <p>{fight[1].first_name} {fight[1].nickname} {fight[1].last_name}</p>
+              <h2>VS</h2>
+              <Fighter name={`${fight[1].first_name} ${fight[1].last_name}`}
+                record={`${fight[1].wins}-${fight[1].losses}-${fight[1].draws}`}
+                imgUrl={fight[1].profile_image} />
+              <br />
             </div>
           ))
         }
