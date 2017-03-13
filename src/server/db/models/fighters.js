@@ -5,24 +5,53 @@ const Schema = mongoose.Schema;
 
 const  fighterSchema = new Schema({
   id: Number,
-  nickname: String,
-  wins: Number,
-  statid: Number,
-  losses: Number,
-  last_name: String,
-  weight_class: String,
-  title_holder: Boolean,
-  draws: Number,
-  first_name: String,
-  fighter_status: String,
-  rank: String,
-  pound_for_pound_rank: String,
-  thumbnail: String,
-  belt_thumbnail: String,
-  left_full_body_image: String,
-  right_full_body_image: String,
-  profile_image: String,
-  link: String
+  name: {
+    first: {type: String, required: true},
+    nickname: {type: String},
+    last: {type: String, required: true}
+  },
+  weight_class: {type: String},
+  reach: {type: Number, default: 0},
+  record: {
+    wins: {
+      total: {type: Number},
+      against: [{type: Schema.ObjectId, ref: 'Fighter'}],
+      knockout: {type: Number, default: 0},
+      submission: {type: Number, default: 0},
+      decision: {
+        unanimous: {type: Number, default: 0},
+        split: {type: Number, default: 0}
+      }
+    },
+    losses: {
+      total: {type: Number},
+      against: [{type: Schema.ObjectId, ref: 'Fighter'}],
+      knockout: {type: Number, default: 0},
+      submission: {type: Number, default: 0},
+      decision: {
+        unanimous: {type: Number, default: 0},
+        split: {type: Number, default: 0}
+      }
+    }, 
+    draws: {
+      total: {type: Number, default: 0},
+      against: [{type: Schema.ObjectId, ref: 'Fighter'}]
+    }, 
+  },
+  stats: {
+    averagefighttime_seconds: {type: Number},
+    kdaverage: {type: Number},
+    slpm: {type: Number},
+    strikingaccuracy: {type: Number},
+    sapm: {type: Number},
+    strikingdefense: {type: Number},
+    takedownaverage: {type: Number},
+    takedowndefense: {type: Number},
+    takedownaccuracy: {type: Number},
+    submissionsaverage: {type: Number}
+  },
+  title_holder: {type: Boolean},
+  image_url: {type: String}
 });
 
 const Fighter = mongoose.model('Fighter', fighterSchema);
