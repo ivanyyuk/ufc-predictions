@@ -8,5 +8,7 @@ as well as taking into account takedown %, submission  % and more.
 
 I have parsed the [UFC data api](http://ufc-data-api.ufc.com/api/v3/iphone) to get statistics and it is only as accurate as their API (which is not very thorough).
 
-This is built with Node, Express and MongoDb on the backend, and React/Redux on the front-end.
+This is built with Node, Express and MongoDb on the backend, and React/Redux on the front-end. 
 
+
+-Scaffolded with Create-React-App.
