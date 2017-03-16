@@ -2,11 +2,10 @@
 
 const router = require('express').Router();
 const Fighters = require('../db/models/fighters');
-const EventPages = require('../db/models/eventPage');
+const Events = require('../db/models/event');
 
 router.get('/', (req, res, next) => {
-  console.log('goet');
-  EventPages.find()
+  Events.find()
     .then(fighters => res.send(fighters))
     .catch(next);
 });

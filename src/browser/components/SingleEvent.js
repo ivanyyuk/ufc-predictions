@@ -16,7 +16,7 @@ class SingleEvent extends React.Component {
       .then(res => res.data)
       .then(fights => {
         console.log(fights);
-        this.setState({fights: fights})})
+        this.setState({fights: fights});})
       .catch(console.error);
   }
 
@@ -26,14 +26,14 @@ class SingleEvent extends React.Component {
         {
           this.state.fights.map((fight,index) => (
             <div key={index} className='versus-page'>
-              <Fighter name={`${fight[0].first_name} ${fight[0].last_name}`}
-                record={`${fight[0].wins}-${fight[0].losses}-${fight[0].draws}`}
-                imgUrl={fight[0].profile_image} />
+              <Fighter name={`${fight[0].name.first} ${fight[0].name.last}`}
+                record={`${fight[0].record.wins.total}-${fight[0].record.losses.total}-${fight[0].record.draws.total}`}
+                imgUrl={fight[0].image_url} />
               <br />
               <h2>VS</h2>
-              <Fighter name={`${fight[1].first_name} ${fight[1].last_name}`}
-                record={`${fight[1].wins}-${fight[1].losses}-${fight[1].draws}`}
-                imgUrl={fight[1].profile_image} />
+              <Fighter name={`${fight[1].name.first} ${fight[1].name.last}`}
+                record={`${fight[1].record.wins.total}-${fight[1].record.losses.total}-${fight[1].record.draws.total}`}
+                imgUrl={fight[1].image_url} />
               <br />
             </div>
           ))
