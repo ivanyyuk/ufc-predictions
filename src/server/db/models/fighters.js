@@ -2,6 +2,8 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { populateFights, checkIfFightAlreadyStored } = require('./fighter.methods');
+
 
 const  fighterSchema = new Schema({
   id: Number,
@@ -15,29 +17,29 @@ const  fighterSchema = new Schema({
   record: {
     wins: {
       total: {type: Number},
-      against: [{type: Schema.ObjectId, ref: 'Fighter'}],
       knockout: {type: Number, default: 0},
       submission: {type: Number, default: 0},
-      decision: {
-        unanimous: {type: Number, default: 0},
-        split: {type: Number, default: 0}
-      }
+      unanimous: {type: Number, default: 0},
+      split: {type: Number, default: 0},
+      disqualification: {type: Number, default: 0}
+
     },
     losses: {
       total: {type: Number},
-      against: [{type: Schema.ObjectId, ref: 'Fighter'}],
       knockout: {type: Number, default: 0},
       submission: {type: Number, default: 0},
-      decision: {
-        unanimous: {type: Number, default: 0},
-        split: {type: Number, default: 0}
-      }
+      unanimous: {type: Number, default: 0},
+      split: {type: Number, default: 0},
+      disqualification: {type: Number, default: 0}
     }, 
     draws: {
-      total: {type: Number, default: 0},
-      against: [{type: Schema.ObjectId, ref: 'Fighter'}]
+      total: {type: Number, default: 0}
     }, 
   },
+  fights: [{
+    opponent: {type: Schema.ObjectId, ref: 'Fighter'},
+    fight: {type: Schema.ObjectId, ref: 'Fight'}
+  }],
   stats: {
     averagefighttime_seconds: {type: Number},
     kdaverage: {type: Number},
@@ -54,7 +56,13 @@ const  fighterSchema = new Schema({
   image_url: {type: String}
 });
 
+fighterSchema.methods.populateFights = populateFights;
+fighterSchema.methods.checkIfFightAlreadyStored = checkIfFightAlreadyStored;
+
+
 const Fighter = mongoose.model('Fighter', fighterSchema);
 
 module.exports = Fighter;
+
+
 
