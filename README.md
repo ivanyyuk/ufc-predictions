@@ -11,4 +11,3 @@ I have parsed the [UFC data api](http://ufc-data-api.ufc.com/api/v3/iphone) to g
 This is built with Node, Express and MongoDb on the backend, and React/Redux on the front-end. 
 
 
--Scaffolded with Create-React-App.
