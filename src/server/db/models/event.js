@@ -6,7 +6,7 @@ const Fight = require('./eventFight');
 
 const eventSchema = new Schema({
   id: Number,
-  date: String,
+  date: Date,
   image: String,
   location: String,
   name: String,

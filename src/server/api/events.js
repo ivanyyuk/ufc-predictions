@@ -5,9 +5,14 @@ const Event = require('../db/models/event');
 const Fight = require('../db/models/eventFight.js');
 const Bluebird = require('bluebird');
 const Fighter = require('../db/models/fighters');
+const moment = require('moment');
 
 router.get('/', (req, res, next) => {
-  Event.find({})
+ const rightNow = moment().startOf('day').toISOString();
+  Event.find({
+    date: {$gte: rightNow},
+    tagLine: {$ne: 'TBA vs TBD'}
+  })
     .then(events => res.send(events))
     .catch(next);
 });

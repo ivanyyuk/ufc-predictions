@@ -1,9 +1,10 @@
-export const LOAD_EVENT = 'LOAD_EVENT';
+export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
+export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 
-export const loadEvent = function (eventId) {
+export const receiveEvents = (events) => {
   const action = {
-    type: LOAD_EVENT,
-    eventId
+    type: RECEIVE_EVENTS,
+    events
   };
   return action;
 };
