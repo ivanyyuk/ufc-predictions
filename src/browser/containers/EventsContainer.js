@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Events from '../components/Events';
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   events: state.events
 });
 

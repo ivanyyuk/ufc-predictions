@@ -18,9 +18,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  Fight.find({event_id: req.params.id})
+  const eventToSend = {};
+
+  Event.findOne({id: req.params.id})
+    .then(event => eventToSend.name = event.name)
+    .then(() =>Fight.find({event_id: req.params.id}))  
     .then(fights => {
-      console.log(fights.length);
       return Bluebird.map(fights, fight => {
         return Fighter.find({id:
           { $in: [
@@ -29,9 +32,12 @@ router.get('/:id', (req, res, next) => {
           ]}
         });
       })
-        .then(fightsArray => res.send(fightsArray));
+        .then(fightsArray => eventToSend.fights = fightsArray);
     })
+    .then(() => res.send(eventToSend))
     .catch(next);
+
+
 });
 
 module.exports = router;
