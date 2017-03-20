@@ -1,6 +1,6 @@
 'use strict';
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3000;
 const express = require('express');
 const http = require('http');
 const mongoose = require('mongoose');
@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 // set up server
 const server = http.createServer();
 const app = express();
+const path = require('path');
 
 server.on('request', app);
 
@@ -20,9 +21,17 @@ app.use(morgan('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended: true}));
 
+//statics
+app.use(express.static(path.join(__dirname,'../../public')));
+
 
 //routes
 app.use('/api', require('./api'));
+
+//always send index
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../browser/index.html'));
+});
 
 //error catch
 app.use(function (err, req, res, next) {
@@ -30,6 +39,9 @@ app.use(function (err, req, res, next) {
   res.sendStatus(500);
 });
 
+
+//mongoose
+mongoose.Promise = require('bluebird');
 
 //listen
 mongoose.connect('mongodb://localhost/UFC')
