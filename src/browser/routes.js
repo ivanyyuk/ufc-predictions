@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './store';
+import App from './components/App';
 import EventsContainer from './containers/EventsContainer';
 import SingleEventContainer from './containers/SingleEventContainer';
 import Search from './components/Search';
@@ -24,9 +25,11 @@ export default () => {
   return (
     <Provider store={store}>
       <Router history={browserHistory}>
-        <Route path='/' component={Search} />
-        <Route path="events" component={EventsContainer} onEnter={onEventsEnter}/>
-        <Route path="events/:id" component={SingleEventContainer} onEnter={onSingleEventEnter}/>
+        <Route path='/' component={App}>
+          <Route path="search" component={Search} />
+          <Route path="events" component={EventsContainer} onEnter={onEventsEnter}/>
+          <Route path="events/:id" component={SingleEventContainer} onEnter={onSingleEventEnter}/>
+        </Route>
       </Router>
     </Provider> 
   );

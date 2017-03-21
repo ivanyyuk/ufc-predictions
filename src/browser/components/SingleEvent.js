@@ -11,12 +11,9 @@ export default ({ currentEvent }) => {
             <Fighter name={`${fight[0].name.first} ${fight[0].name.last}`}
               record={`${fight[0].record.wins.total}-${fight[0].record.losses.total}-${fight[0].record.draws.total}`}
               imgUrl={fight[0].image_url} />
-            <br />
-            <h2>VS</h2>
             <Fighter name={`${fight[1].name.first} ${fight[1].name.last}`}
               record={`${fight[1].record.wins.total}-${fight[1].record.losses.total}-${fight[1].record.draws.total}`}
               imgUrl={fight[1].image_url} />
-            <br />
           </div>
         ))
       }
