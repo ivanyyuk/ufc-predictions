@@ -5,7 +5,7 @@ import store from './store';
 import App from './components/App';
 import EventsContainer from './containers/EventsContainer';
 import SingleEventContainer from './containers/SingleEventContainer';
-import Search from './components/Search';
+import SearchContainer from './containers/SearchContainer';
 import { receiveEvents } from './action-creators/events.js';
 import { getEventById } from './action-creators/single-event';
 import axios from 'axios';
@@ -26,7 +26,7 @@ export default () => {
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path='/' component={App}>
-          <Route path="search" component={Search} />
+          <Route path="search" component={SearchContainer} />
           <Route path="events" component={EventsContainer} onEnter={onEventsEnter}/>
           <Route path="events/:id" component={SingleEventContainer} onEnter={onSingleEventEnter}/>
         </Route>
