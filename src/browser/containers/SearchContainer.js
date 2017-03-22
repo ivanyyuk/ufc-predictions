@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Search from '../components/Search';
 import axios from 'axios';
+import { receiveSearchResults } from '../action-creators/search';
 
 
 class SearchContainer extends Component {
@@ -9,7 +11,6 @@ class SearchContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.timer = null; 
-    this.state = { matches: [] };
   }
 
   handleSubmit(evt) {
@@ -21,11 +22,8 @@ class SearchContainer extends Component {
     const debounceTimer = 500;
     const minLength = 2;
     clearTimeout(this.timer);
-    console.log(value);
     this.timer = setTimeout(() => {
-      if (value.length < minLength){
-        this.setState({ matches: [] });
-      } else {
+      if (value.length > minLength){
         this.triggerFetch(value);
       }
     }, debounceTimer);
@@ -35,9 +33,7 @@ class SearchContainer extends Component {
     axios.post('/api/search',{
       searchText
     })
-      .then(matches => {
-        this.setState({matches: matches.data});
-      })
+      .then(matches => this.props.receiveSearch(matches.data))
       .catch(console.error);
   }
 
@@ -51,4 +47,19 @@ class SearchContainer extends Component {
   }
 };
 
-export default SearchContainer;
+const mapStateToProps = (state, ownProps) => ({
+ searchResults: state.searchResults 
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    receiveSearch: (results) => {
+      dispatch(receiveSearchResults(results));
+    }
+  };
+};
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
+
