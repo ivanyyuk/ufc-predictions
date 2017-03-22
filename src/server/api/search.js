@@ -15,15 +15,15 @@ router.post('/', (req, res, next) => {
   const searches = [];
 
   Bluebird.each(searchExp, function (exp) {
-   return Fighter.find({
+    return Fighter.find({
       $or: [
-        { first_name: exp }, { last_name: exp}]
+        { first_name: exp }, { last_name: exp }]
     })
-    .then(found => searches.push(found))
+      .then(found => searches.push(found))
   })
-  .then(() => _.flatten(searches))
-  .then(flatSearch => res.json(_.uniqBy(flatSearch, 'id')))
-  .catch(next);
+    .then(() => _.flatten(searches))
+    .then(flatSearch => res.json(_.uniqBy(flatSearch, 'id')))
+    .catch(next);
 
 });
 
