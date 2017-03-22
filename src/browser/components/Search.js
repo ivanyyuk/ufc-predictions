@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({handleChange, handleSubmit}) => {
+export default ({handleChange, handleSubmit, searchResults}) => {
   return(
     <div className='tc'>
       <form onSubmit={handleSubmit}>
@@ -8,6 +8,13 @@ export default ({handleChange, handleSubmit}) => {
           className='input-reset center ba b--black-20 pa2 mb2 db w-90'
           placeholder='Fighter 1' onChange={handleChange} 
         />
+        <ul className='results list tl'>
+        {
+          searchResults.map(result => (
+            <li key={result.id}>{result.first_name} {result.last_name}</li>
+          ))
+        }
+      </ul>
         <input type='text' 
           className='input-reset center ba b--black-20 pa2 mb2 db w-90'
           placeholder='Fighter 2' onChange={handleChange} 

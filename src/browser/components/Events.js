@@ -15,7 +15,7 @@ export default ({events}) => {
               id={event.id}
               key={event.id} />
           ))
-        }
+      }
       </div>
     </div>
   );
