@@ -1,17 +1,11 @@
 import React from 'react';
 
-export default ({name, record, weightClass, imgUrl }) =>  {
+export default ({firstName, lastName, record, weightClass, imgUrl }) =>  {
   return (
-    <div className='fighter fl w-40 tc'>
-      <div>
-        <img className='db'  src={imgUrl} alt={`${name}`} />
-        <dl className="mt2 f6 lh-copy">
-          <dd className="ml0 fw9">{name}</dd>
-          <dd className="ml0 gray">{record}</dd>
-          <dd className="ml0 gray">{weightClass}</dd>
-        </dl> 
-      </div>
+    <div className='fighter col col-6 p2'>
+      <p className='center'>{firstName} <br/> {lastName}</p>
+        <img className='circle'  src={imgUrl} alt={`${name}`} />
+        <h5 className="center">{record}</h5>
     </div>
   );
 };
-

@@ -10,7 +10,6 @@ router.post('/', (req, res, next) => {
     .split(' ')
     .map(elem => '(?=.*' + elem + ')');
 
-
   const searchExp = searchText.map(exp => new RegExp(exp, 'ig'));
   const searches = [];
 
@@ -19,7 +18,7 @@ router.post('/', (req, res, next) => {
       $or: [
         { first_name: exp }, { last_name: exp }]
     })
-      .then(found => searches.push(found))
+      .then(found => searches.push(found));
   })
     .then(() => _.flatten(searches))
     .then(flatSearch => res.json(_.uniqBy(flatSearch, 'id')))
