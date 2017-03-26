@@ -50,7 +50,10 @@ class SearchContainer extends Component {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  searchResults: state.searchResults
+  searchResults: state.searchResults,
+  fighter1: state.fighter1,
+  fighter2: state.fighter2
+
 });
 
 const mapDispatchToProps = (dispatch) => {

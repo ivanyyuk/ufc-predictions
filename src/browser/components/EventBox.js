@@ -26,10 +26,10 @@ const EventBox = ({name, tagLine, image, date, id, fights, faded, toggleFade}) =
       faded &&
         <div
           className={`event-info fade-in col md-col-5 lg-col-5 sm-col-12 xs-hide sm-hide `}>
-          <ul className='list-reset right'>
+          <ul className='list-reset center'>
             {
               fights &&
-                fights.map(fight => <li className='my1 mx1'
+                fights.map(fight => <li className='my1'
                   key={fight.fighter1.id}>
                   <Link className='navy' to='#'>{fight.fighter1.name} vs {fight.fighter2.name}</Link></li>)
             }

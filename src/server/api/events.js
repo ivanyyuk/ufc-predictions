@@ -42,7 +42,6 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-//TODO: Use the fight collection to sort by fightcard_order, not the fighters
 router.get('/:id', (req, res, next) => {
   const eventToSend = {};
 
@@ -50,7 +49,8 @@ router.get('/:id', (req, res, next) => {
     .then(event => eventToSend.name = event.name)
     .then(() =>Fight.find({event_id: req.params.id}))  
     .then(fights => {
-      return Bluebird.map(fights, fight => {
+      let sortedFights = _.sortBy(fights, (f) => f.fightcard_order);
+      return Bluebird.map(sortedFights, fight => {
         return Fighter.find({id:
           { $in: [
             fight.fighter1_id,
@@ -58,7 +58,7 @@ router.get('/:id', (req, res, next) => {
           ]}
           });
       })
-        .then(fightsArray => eventToSend.fights = _.sortBy(fightsArray, function(o){ return Number( o.fightcard_order);}));
+        .then(fightsArray => eventToSend.fights = fightsArray);
     })
     .then(() => res.send(eventToSend))
     .catch(next);
