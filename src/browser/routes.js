@@ -8,6 +8,7 @@ import SingleEventContainer from './containers/SingleEventContainer';
 import SearchContainer from './containers/SearchContainer';
 import { receiveEvents } from './action-creators/events.js';
 import { getEventById } from './action-creators/single-event';
+import { clearSearchResults } from './action-creators/search';
 import axios from 'axios';
 
 const onEventsEnter = () => {
@@ -21,12 +22,16 @@ const onSingleEventEnter = (nextRouterState) => {
   store.dispatch(getEventById(eventId));
 };
 
+const onSearchEnter = () => {
+  store.dispatch(clearSearchResults());
+};
+
 export default () => {
   return (
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path='/' component={App}>
-          <Route path="search" component={SearchContainer} />
+          <Route path="search" component={SearchContainer} onEnter={onSearchEnter}/>
           <Route path="events" component={EventsContainer} onEnter={onEventsEnter}/>
           <Route path="events/:id" component={SingleEventContainer} onEnter={onSingleEventEnter}/>
         </Route>

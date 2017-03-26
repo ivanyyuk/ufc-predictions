@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Search from '../components/Search';
 import axios from 'axios';
-import { receiveSearchResults, clearSearchResults } from '../action-creators/search';
+import { receiveSearchResults, clearSearchResults, setFighter } from '../action-creators/search';
 
 
 class SearchContainer extends Component {
@@ -10,6 +10,7 @@ class SearchContainer extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.timer = null;
   }
 
@@ -17,7 +18,12 @@ class SearchContainer extends Component {
     evt.preventDefault();
   }
 
+  handleClick(index, name, id) {
+    this.props.setFighter(index, name, id);
+  }
+
   handleChange(evt) {
+    const index = evt.target.placeholder.slice(-1);
     const value = evt.target.value;
     const debounceTimer = 500;
     const minLength = 2;
@@ -25,16 +31,16 @@ class SearchContainer extends Component {
     if (value.length === 0) this.props.clearSearches();
     this.timer = setTimeout(() => {
       if (value.length > minLength) {
-        this.triggerFetch(value);
+        this.triggerFetch(value, index);
       }
     }, debounceTimer);
   }
 
-  triggerFetch(searchText) {
+  triggerFetch(searchText, index) {
     axios.post('/api/search', {
       searchText
     })
-      .then(matches => this.props.receiveSearch(matches.data))
+      .then(matches => this.props.receiveSearch(matches.data, index))
       .catch(console.error);
   }
 
@@ -43,6 +49,7 @@ class SearchContainer extends Component {
       <Search
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
+        handleClick={this.handleClick}
         searchResults={this.props.searchResults}
       />
     );
@@ -58,11 +65,14 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    receiveSearch: (results) => {
-      dispatch(receiveSearchResults(results));
+    receiveSearch: (results, index) => {
+      dispatch(receiveSearchResults(results, index));
     },
     clearSearches: () => {
       dispatch(clearSearchResults());
+    },
+    setFighter: (index, name, id) => {
+      dispatch(setFighter(index, name, id));
     }
   };
 };
