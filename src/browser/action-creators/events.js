@@ -8,3 +8,4 @@ export const receiveEvents = (events) => {
   };
   return action;
 };
+

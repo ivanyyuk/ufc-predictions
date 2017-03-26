@@ -3,28 +3,29 @@ import React from 'react';
 
 export default () => {
   return(
-    <nav className="pa3 pa4-ns">
+    <div className='container clearfix'>
+      <div className='logo col col-12 center'>
+        <Link to='/' className='white'>
+          <h1 className='white'>UFC FIGHT PREDICTIONS</h1>
+        </Link>
+      </div>
 
-      <Link to='/' className='link black b f1 f-headline-ns tc db mb3 mb4-ns'>
-        UFC Fight Predictions
-      </Link>
+      <div className="col col-12 flex center nowrap">
 
-      <div className="tc pb3">
-
-        <Link to='/' className='link dim gray f6 f5-ns dib mr3'>
+        <Link to='/' className='flex-auto btn'>
           Home
         </Link> 
 
-        <Link to='events' className='link dim gray f6 f5-ns dib mr3'>
+        <Link to='/events' className='flex-auto btn'>
           Upcoming Events
         </Link>
 
-        <Link to='search' className='link dim gray f6 f5-ns dib mr3'>
+        <Link to='/search' className='flex-auto btn'>
           Search
         </Link>
-        
+
       </div>
-    </nav>
+    </div>
   );
 };
 

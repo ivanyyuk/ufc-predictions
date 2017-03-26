@@ -6,6 +6,7 @@ const Fight = require('../db/models/eventFight.js');
 const Bluebird = require('bluebird');
 const Fighter = require('../db/models/fighters');
 const moment = require('moment');
+const _ = require('lodash');
 
 router.get('/', (req, res, next) => {
  const rightNow = moment().startOf('day').toISOString();
@@ -32,7 +33,7 @@ router.get('/:id', (req, res, next) => {
           ]}
         });
       })
-        .then(fightsArray => eventToSend.fights = fightsArray);
+        .then(fightsArray => eventToSend.fights = _.sortBy(fightsArray, function(o){ return Number( o.fightcard_order);}));
     })
     .then(() => res.send(eventToSend))
     .catch(next);

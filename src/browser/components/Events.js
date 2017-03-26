@@ -2,7 +2,7 @@ import React from 'react';
 import EventBox from '../components/EventBox';
 
 
-export default ({events}) => {
+export default ({events,faded, fadeIn}) => {
   return (
     <div>
       <div>
@@ -13,7 +13,9 @@ export default ({events}) => {
               image={event.image}
               date={new Date(event.date).toString()}
               id={event.id}
-              key={event.id} />
+              key={event.id}
+              faded={faded}
+              fadeIn={fadeIn} />
           ))
       }
       </div>
