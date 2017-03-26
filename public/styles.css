@@ -37,8 +37,11 @@ img {
 .event-info {
 }
 
-.event-row {
-  align-items: center;
+.event-card {
+  -webkit-transition: width 0.3s ease, margin 0.3s ease;
+  -moz-transition: width 0.3s ease, margin 0.3s ease;
+  -o-transition: width 0.3s ease, margin 0.3s ease;
+  transition: width 0.3s ease, margin 0.3s ease;
 }
 
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -79,10 +82,10 @@ img {
 
 
 /*.versus-page img{*/
-  /*float:right;*/
+/*float:right;*/
 /*}*/
 
 /*.fighter {*/
-  /*display:inline-block;*/
-  /*float:left;*/
+/*display:inline-block;*/
+/*float:left;*/
 /*}*/
