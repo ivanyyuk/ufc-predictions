@@ -14,6 +14,7 @@ export default ({events, toggleFade}) => {
               date={new Date(event.date).toString()}
               id={event.id}
               key={event.id}
+              fights={event.fights}
               faded={event.faded}
               toggleFade={toggleFade} />
           ))

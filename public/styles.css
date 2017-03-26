@@ -1,7 +1,6 @@
 body {
   margin: 0 auto;
   padding: 0;
-  width:90vw;
   /*font-family: sans-serif;*/
   /*background-color: #ffb700;*/
 }
@@ -35,6 +34,10 @@ img {
 }
 
 .event-info {
+}
+
+.event-row:nth-of-type(odd){
+  background-color: #ffb700;
 }
 
 .event-card {

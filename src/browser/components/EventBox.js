@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-const EventBox = ({name, tagLine, image, date, id, faded, toggleFade}) => ( 
-  <div className='event-row container flex flex-wrap center items-center'
+const EventBox = ({name, tagLine, image, date, id, fights, faded, toggleFade}) => ( 
+  <div className='event-row container flex flex-nowrap center items-center'
         onMouseEnter={ () => toggleFade(id)}
         onMouseLeave = { () => toggleFade(id)} 
       >
-    <div className={`event-card col ${faded ? 'md-col-6 lg-col-6': 'md-col-12 lg-col-12'} sm-col-12`}>
+    <div className={`event-card col ${faded ? 'md-col-6 lg-col-6': 'md-col-12 lg-col-12'} xs-col-12`}>
       <article className="" 
       >
         <div className="">
@@ -22,13 +22,17 @@ const EventBox = ({name, tagLine, image, date, id, faded, toggleFade}) => (
   </div>
   {
     faded &&
-    <div className={`event-info col md-col-6 lg-col-6 sm-col-12 xs-hide sm-hide `}>
-      <ul className='center'>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-      </ul>
-    </div>
+      <div
+        className={`event-info fade-in col md-col-5 lg-col-5 sm-col-12 xs-hide sm-hide `}>
+        <ul className='list-reset center'>
+          {
+            fights &&
+              fights.map(fight => <li className='my1'
+                key={fight.fighter1.id}>
+                <Link to='#'>{fight.fighter1.name} vs {fight.fighter2.name}</Link></li>)
+          }
+        </ul>
+      </div>
   }
 </div> 
 );
