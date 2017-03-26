@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
 import Events from '../components/Events';
-import { fadeInInfo } from '../action-creators/faded';
+import { toggleFade } from '../action-creators/events';
 
 const mapStateToProps = (state, ownProps) => ({
   events: state.events,
-  faded: state.faded
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fadeIn: () => {
-      dispatch(fadeInInfo());
+    toggleFade: (eventId) => {
+      dispatch(toggleFade(eventId));
     }
   };
 };

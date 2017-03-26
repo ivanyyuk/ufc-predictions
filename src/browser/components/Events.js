@@ -2,7 +2,7 @@ import React from 'react';
 import EventBox from '../components/EventBox';
 
 
-export default ({events,faded, fadeIn}) => {
+export default ({events, toggleFade}) => {
   return (
     <div>
       <div>
@@ -14,8 +14,8 @@ export default ({events,faded, fadeIn}) => {
               date={new Date(event.date).toString()}
               id={event.id}
               key={event.id}
-              faded={faded}
-              fadeIn={fadeIn} />
+              faded={event.faded}
+              toggleFade={toggleFade} />
           ))
       }
       </div>

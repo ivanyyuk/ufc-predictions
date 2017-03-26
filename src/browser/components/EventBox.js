@@ -1,10 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-const EventBox = ({name, tagLine, image, date, id, faded, fadeIn}) => ( 
+const EventBox = ({name, tagLine, image, date, id, faded, toggleFade}) => ( 
   <div className='event-row container flex flex-wrap'>
     <div className='col md-col-6 lg-col-6 sm-col-12'>
-      <article className="" onMouseOver={fadeIn}>
+      <article className="" 
+        onMouseOver={ () => toggleFade(id)}
+        onMoueOut = { () => toggleFade(id)} 
+      >
         <div className="">
           <h1 className="">{name}</h1>
           <Link className='' to={`/events/${id}`}>
