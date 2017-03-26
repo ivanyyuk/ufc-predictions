@@ -4,7 +4,7 @@ import EventBox from '../components/EventBox';
 
 export default ({events, toggleFade}) => {
   return (
-    <div>
+    <div className='events'>
       <div>
         {
           events.slice().reverse().map(event => (

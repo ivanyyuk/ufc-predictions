@@ -2,7 +2,7 @@ import React from 'react';
 
 export default ({handleChange, handleSubmit, searchResults}) => {
   return(
-    <div className='tc'>
+    <div className='container clearfix search flex flex-row center items-center col col-12'>
       <form onSubmit={handleSubmit}>
         <input type='text'
           className='input-reset center ba b--black-20 pa2 mb2 db w-90'
