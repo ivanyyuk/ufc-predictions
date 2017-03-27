@@ -1,16 +1,9 @@
 import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 
-export default ({handleChange, handleSubmit, f1Results, handleClick, value1, value2, fighter1, fighter2}) => {
+export default ({handleChange, handleSubmit, searchResults, handleClick, value1, value2, fighter1, fighter2}) => {
   return(
     <div className='container clearfix search flex flex-column center items-center col col-12 mb2'>
-      <AutoComplete 
-        hintText="Fighter 1"
-    dataSource={f1Results}
-    dataSourceConfig={{text:'last_name', value:'id'}}
-    onUpdateInput={e => handleChange(e,1)} 
-    filter={AutoComplete.noFilter}
-  />
       <h2>PICK TWO FIGHTERS</h2>
       <h5>Once you have both, hit predict</h5>
       <br />
@@ -19,26 +12,15 @@ export default ({handleChange, handleSubmit, f1Results, handleClick, value1, val
       >
         <label className='label'> Type first name, last name or both. <br/>
       Only 3 letters needed to start search.</label>
-    {/*   <input type='text'
-          className='input sm-col-10'
-          value={value1}
-          placeholder='Fighter 1' onChange={ e => handleChange(e,1)} 
-        />
-        <ul className={`${searchResults.f1Results.length ? '': 'hide'} center search-dropdown-menu flex flex-column`}>
-    {
-      searchResults.f1Results.map(result => (
-        <li
-          className='list-reset btn '
-          key={result.id}
-          onClick={() => handleClick(1, `${result.first_name} ${result.last_name}`, result.id)} 
-          >{result.first_name} {result.last_name}</li>
-
-      ))
-    }
-  </ul>
-  */}
-  {/*
-<input type='text' 
+    <AutoComplete 
+      dataSource={searchResults.f1Results}
+      hintText="Fighter 1"
+      dataSourceConfig={ {text: 'name', value: 'id'} }
+      onUpdateInput={value => handleChange(value, 1)}
+      openOnFocus={true}
+      filter={AutoComplete.noFilter}
+    />
+        <input type='text' 
           className='input block sm-col-10'
           placeholder='Fighter 2' onChange={e => handleChange(e,2)} 
           value={value2}
@@ -55,7 +37,6 @@ export default ({handleChange, handleSubmit, f1Results, handleClick, value1, val
       ))
     }
   </ul>
-  */}
 
       <br />
         <input
@@ -67,3 +48,4 @@ export default ({handleChange, handleSubmit, f1Results, handleClick, value1, val
     </div>
   );
 };
+

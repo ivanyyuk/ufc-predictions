@@ -35,11 +35,10 @@ class SearchContainer extends Component {
 
   }
 
-  handleChange(evt, index) {
+  handleChange(value, index) {
     let stateObj = {};
-    stateObj[`value${index}`] = evt;
+    stateObj[`value${index}`] = value;
     this.setState(stateObj);
-    const value = evt;
     const debounceTimer = 500;
     const minLength = 2;
     clearTimeout(this.timer);
@@ -65,8 +64,7 @@ class SearchContainer extends Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleClick={this.handleClick}
-        f1Results = {this.props.searchResults.f1Results}
-        f2Results = {this.props.searchResults.f2Results}
+        searchResults={this.props.searchResults}
         value1={this.state.value1}
         value2={this.state.value2}
         fighter1={this.props.searchResults.fighter1}
