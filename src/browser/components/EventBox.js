@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-const EventBox = ({name, tagLine, image, date, id, fights, faded, toggleFade}) => ( 
+const EventBox = ({name, tagLine, image, date, id, fights, faded, fadeIn, fadeOut}) => ( 
   <div className='event-row container flex flex-nowrap center items-center '
-        onMouseEnter={ () => toggleFade(id)}
-        onMouseLeave = { () => toggleFade(id)} 
+        onMouseEnter={ () => fadeIn(id)}
+        onMouseLeave = { () => fadeOut(id)} 
       >
     <div className={`event-card col ${faded ? 'md-col-6 lg-col-6': 'md-col-12 lg-col-12'} sm-col-12 xs-col-12`}>
       <article className="" 
