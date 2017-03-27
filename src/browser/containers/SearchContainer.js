@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Search from '../components/Search';
 import axios from 'axios';
 import { receiveSearchResults, clearSearchResults, setFighter } from '../action-creators/search';
+import { browserHistory } from 'react-router';
 
 
 class SearchContainer extends Component {
@@ -19,8 +20,11 @@ class SearchContainer extends Component {
     };
   }
 
-  handleSubmit(evt) {
+  handleSubmit(evt, id1, id2) {
     evt.preventDefault();
+    if (id1 && id2) {
+      browserHistory.push(`/fight/${id1}/${id2}`);
+    }
   }
 
   handleClick(index, name, id) {
@@ -39,7 +43,7 @@ class SearchContainer extends Component {
     const debounceTimer = 500;
     const minLength = 2;
     clearTimeout(this.timer);
-    if (value.length === 0) this.props.clearSearches();
+    if (value.length === 0) this.props.clearSearches(index);
     this.timer = setTimeout(() => {
       if (value.length > minLength) {
         this.triggerFetch(value, index);
@@ -64,6 +68,8 @@ class SearchContainer extends Component {
         searchResults={this.props.searchResults}
         value1={this.state.value1}
         value2={this.state.value2}
+        fighter1={this.props.searchResults.fighter1}
+        fighter2={this.props.searchResults.fighter2}
       />
     );
   }
@@ -81,8 +87,8 @@ const mapDispatchToProps = (dispatch) => {
     receiveSearch: (results, index) => {
       dispatch(receiveSearchResults(results, index));
     },
-    clearSearches: () => {
-      dispatch(clearSearchResults());
+    clearSearches: (index) => {
+      dispatch(clearSearchResults(index));
     },
     setFighter: (index, name, id) => {
       dispatch(setFighter(index, name, id));

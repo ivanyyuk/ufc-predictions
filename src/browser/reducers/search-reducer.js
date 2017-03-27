@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   RECEIVE_SEARCH_RESULTS,
   PICK_SEARCH_RESULT,
@@ -14,7 +15,8 @@ const initialSearchState = {
 
 export default (state = initialSearchState, action) => {
 
-  const newState =  Object.assign({},state);
+  //have to use lodash here because Object.assign doesn't deep clone
+  const newState =  _.cloneDeep(state);
 
   switch (action.type) {
 
@@ -27,7 +29,11 @@ export default (state = initialSearchState, action) => {
       return newState;
 
     case (CLEAR_SEARCH_RESULTS):
+      if (!action.index) return Object.assign({}, initialSearchState);
+       
+      else newState[`f${action.index}Results`] = [];
       return newState;
+      
 
     case (SET_FIGHTER):
       let resultsKey = `f${action.index}Results`;

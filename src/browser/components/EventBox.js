@@ -10,22 +10,21 @@ const EventBox = ({name, tagLine, image, date, id, fights, faded, toggleFade}) =
       <article className="" 
       >
         <div className="">
-          <h1 className="">{name}</h1>
+          <h2 className="">{name}</h2>
           <Link className='' to={`/events/${id}`}>
             <img src={image} 
-              className='rounded'
+              className='rounded mx-auto'
               alt={name}
             />
           </Link>
-          <h2 className="">{tagLine}</h2>
-          <h3 className="">{date}</h3>
+          <h3 className="">{tagLine}</h3>
         </div>
       </article>
     </div>
     {
       faded &&
         <div
-          className={`event-info fade-in col md-col-5 lg-col-5 sm-col-12 xs-hide sm-hide `}>
+          className={`event-info fade-in col md-col-6 lg-col-6 sm-col-12 xs-hide sm-hide `}>
           <ul className='list-reset center'>
             {
               fights &&

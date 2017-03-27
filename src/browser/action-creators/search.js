@@ -21,9 +21,10 @@ export const pickSearchResult = (result, searchBarIndex) => {
   return action;
 };
 
-export const clearSearchResults = () => {
+export const clearSearchResults = (index) => {
   const action = {
-    type: CLEAR_SEARCH_RESULTS
+    type: CLEAR_SEARCH_RESULTS,
+    index
   };
   return action;
 };

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './store';
 import App from './components/App';
+import Home from './components/Home';
 import EventsContainer from './containers/EventsContainer';
 import SingleEventContainer from './containers/SingleEventContainer';
 import SearchContainer from './containers/SearchContainer';
@@ -10,7 +11,7 @@ import FightContainer from './containers/FightContainer';
 import { receiveEvents } from './action-creators/events.js';
 import { getEventById } from './action-creators/single-event';
 import { clearSearchResults } from './action-creators/search';
-import { getFightInfo } from './action-creators/fight';
+import { getFightInfo, clearFight } from './action-creators/fight';
 import axios from 'axios';
 
 const onEventsEnter = () => {
@@ -34,15 +35,21 @@ const onFightEnter = (nextRouterState) => {
   store.dispatch(getFightInfo(id1,id2));
 };
 
+const onFightLeave = () => {
+  store.dispatch(clearFight());
+};
+
 export default () => {
   return (
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path='/' component={App}>
+          <IndexRoute component={Home}/>
           <Route path="search" component={SearchContainer} onEnter={onSearchEnter}/>
           <Route path="events" component={EventsContainer} onEnter={onEventsEnter}/>
           <Route path="events/:id" component={SingleEventContainer} onEnter={onSingleEventEnter}/>
-          <Route path="fight/:id1/:id2" component={FightContainer} onEnter={onFightEnter}/>
+          <Route path="fight/:id1/:id2" component={FightContainer}
+            onEnter={onFightEnter} onLeave={onFightLeave}/>
         </Route>
       </Router>
     </Provider> 

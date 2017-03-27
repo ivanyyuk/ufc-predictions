@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 export const RECEIVE_FIGHT = 'RECEIVE_FIGHT';
+export const CLEAR_FIGHT = 'CLEAR_FIGHT';
 
 export const receiveFight = ({fighter1,fighter2}) => {
   const action = {
@@ -19,3 +21,9 @@ export const getFightInfo = (id1, id2) => {
   };
 };
 
+export const clearFight = () => {
+  const action = {
+    type: CLEAR_FIGHT
+  };
+  return action;
+};

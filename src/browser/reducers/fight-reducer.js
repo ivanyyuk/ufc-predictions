@@ -1,4 +1,6 @@
-import { RECEIVE_FIGHT } from '../action-creators/fight';
+import _ from 'lodash';
+
+import { RECEIVE_FIGHT, CLEAR_FIGHT } from '../action-creators/fight';
 
 const initialFightState = {
   fighter1: {
@@ -35,13 +37,16 @@ const initialFightState = {
 
 export default (state = initialFightState, action) => {
 
-  const newState = Object.assign({}, state);
+  const newState = _.cloneDeep(state);
 
   switch(action.type) {
     case (RECEIVE_FIGHT):
       newState.fighter1 = action.fighter1;
       newState.fighter2 = action.fighter2 ;
       return newState;
+
+    case (CLEAR_FIGHT):
+      return _.cloneDeep(initialFightState);
 
     default:
       return state;
