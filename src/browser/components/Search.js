@@ -1,8 +1,15 @@
 import React from 'react';
+import AutoComplete from 'material-ui/AutoComplete';
 
 export default ({handleChange, handleSubmit, searchResults, handleClick, value1, value2, fighter1, fighter2}) => {
   return(
     <div className='container clearfix search flex flex-column center items-center col col-12 mb2'>
+      <AutoComplete 
+        hintText="Fighter 1"
+    dataSource={searchResults.f1Results}
+    dataSourceConfig={{text:'id', value:'id'}}
+    onUpdateInput={e => handleChange(e,1)} 
+  />
       <h2>PICK TWO FIGHTERS</h2>
       <h5>Once you have both, hit predict</h5>
       <br />
@@ -11,7 +18,7 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
       >
         <label className='label'> Type first name, last name or both. <br/>
       Only 3 letters needed to start search.</label>
-        <input type='text'
+    {/*   <input type='text'
           className='input sm-col-10'
           value={value1}
           placeholder='Fighter 1' onChange={ e => handleChange(e,1)} 
@@ -28,7 +35,9 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
       ))
     }
   </ul>
-        <input type='text' 
+  */}
+  {/*
+<input type='text' 
           className='input block sm-col-10'
           placeholder='Fighter 2' onChange={e => handleChange(e,2)} 
           value={value2}
@@ -45,6 +54,7 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
       ))
     }
   </ul>
+  */}
 
       <br />
         <input

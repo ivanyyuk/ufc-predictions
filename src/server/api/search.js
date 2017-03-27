@@ -18,6 +18,9 @@ router.post('/', (req, res, next) => {
     return Fighter.find({
       $or: [
         { first_name: exp }, { last_name: exp }]
+    },
+    {
+      first_name: 1, last_name: 1, id:1, _id:0
     })
       .then(found => searches.push(found));
   })

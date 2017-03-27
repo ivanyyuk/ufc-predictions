@@ -1,6 +1,7 @@
 'use strict';
 
 const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/UFC';
 const express = require('express');
 const http = require('http');
 const mongoose = require('mongoose');
@@ -44,7 +45,7 @@ app.use(function (err, req, res, next) {
 mongoose.Promise = require('bluebird');
 
 //listen
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(MONGODB_URI)
   .then(() => {
     server.listen(PORT, () => {
       console.log(`listening on ${PORT}`);

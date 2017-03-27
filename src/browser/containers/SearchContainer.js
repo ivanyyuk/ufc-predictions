@@ -37,9 +37,9 @@ class SearchContainer extends Component {
 
   handleChange(evt, index) {
     let stateObj = {};
-    stateObj[`value${index}`] = evt.target.value;
+    stateObj[`value${index}`] = evt;
     this.setState(stateObj);
-    const value = evt.target.value;
+    const value = evt;
     const debounceTimer = 500;
     const minLength = 2;
     clearTimeout(this.timer);

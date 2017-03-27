@@ -1,6 +1,9 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import store from './store';
 import App from './components/App';
 import Home from './components/Home';
@@ -15,7 +18,7 @@ import { getFightInfo, clearFight } from './action-creators/fight';
 import axios from 'axios';
 
 const onEventsEnter = () => {
- axios.get('/api/events')
+  axios.get('/api/events')
     .then(res => res.data)
     .then(events => store.dispatch(receiveEvents(events)));
 };
@@ -42,17 +45,19 @@ const onFightLeave = () => {
 export default () => {
   return (
     <Provider store={store}>
-      <Router history={browserHistory}>
-        <Route path='/' component={App}>
-          <IndexRoute component={Home}/>
-          <Route path="search" component={SearchContainer} onEnter={onSearchEnter}/>
-          <Route path="events" component={EventsContainer} onEnter={onEventsEnter}/>
-          <Route path="events/:id" component={SingleEventContainer} onEnter={onSingleEventEnter}/>
-          <Route path="fight/:id1/:id2" component={FightContainer}
-            onEnter={onFightEnter} onLeave={onFightLeave}/>
-        </Route>
-      </Router>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <Router history={browserHistory}>
+          <Route path='/' component={App}>
+            <IndexRoute component={Home}/>
+            <Route path="search" component={SearchContainer} onEnter={onSearchEnter}/>
+            <Route path="events" component={EventsContainer} onEnter={onEventsEnter}/>
+            <Route path="events/:id" component={SingleEventContainer} onEnter={onSingleEventEnter}/>
+            <Route path="fight/:id1/:id2" component={FightContainer}
+              onEnter={onFightEnter} onLeave={onFightLeave}/>
+          </Route>
+        </Router>
+      </MuiThemeProvider>
     </Provider> 
-  );
-};
+    );
+    };
 
