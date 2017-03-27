@@ -2,18 +2,15 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { populateFights, checkIfFightAlreadyStored } = require('./fighter.methods');
+const { assignFightingStats, populateFights, checkIfFightAlreadyStored } = require('./fighter.methods');
 
 
 const  fighterSchema = new Schema({
   id: Number,
-  name: {
-    first: {type: String, required: true},
-    nickname: {type: String},
-    last: {type: String, required: true}
-  },
+  first_name: {type: String, required: true},
+  nickname: {type: String},
+  last_name: {type: String, required: true},
   weight_class: {type: String},
-  reach: {type: Number, default: 0},
   record: {
     wins: {
       total: {type: Number},
@@ -41,16 +38,17 @@ const  fighterSchema = new Schema({
     fight: {type: Schema.ObjectId, ref: 'Fight'}
   }],
   stats: {
-    averagefighttime_seconds: {type: Number},
-    kdaverage: {type: Number},
-    slpm: {type: Number},
-    strikingaccuracy: {type: Number},
-    sapm: {type: Number},
-    strikingdefense: {type: Number},
-    takedownaverage: {type: Number},
-    takedowndefense: {type: Number},
-    takedownaccuracy: {type: Number},
-    submissionsaverage: {type: Number}
+    reach: {type: Number, default: 0},
+    averagefighttime_seconds: {type: Number, default: 0},
+    kdaverage: {type: Number, default: 0},
+    slpm: {type: Number, default: 0},
+    strikingaccuracy: {type: Number, default: 0},
+    sapm: {type: Number, default: 0},
+    strikingdefense: {type: Number, default: 0},
+    takedownaverage: {type: Number, default: 0},
+    takedowndefense: {type: Number, default: 0},
+    takedownaccuracy: {type: Number, default: 0},
+    submissionsaverage: {type: Number, default: 0}
   },
   title_holder: {type: Boolean},
   image_url: {type: String}
@@ -58,7 +56,7 @@ const  fighterSchema = new Schema({
 
 fighterSchema.methods.populateFights = populateFights;
 fighterSchema.methods.checkIfFightAlreadyStored = checkIfFightAlreadyStored;
-
+fighterSchema.methods.assignFightingStats = assignFightingStats;
 
 const Fighter = mongoose.model('Fighter', fighterSchema);
 

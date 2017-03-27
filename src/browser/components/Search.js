@@ -9,7 +9,8 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
       <form onSubmit={e => handleSubmit(e,fighter1.id,fighter2.id)}
         className='xs-col-12 md-col-6 center' 
       >
-        <label className='label'> Type first name, last name or both</label>
+        <label className='label'> Type first name, last name or both. <br/>
+      Only 3 letters needed to start search.</label>
         <input type='text'
           className='input sm-col-10'
           value={value1}
@@ -19,7 +20,7 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
     {
       searchResults.f1Results.map(result => (
         <li
-          className='list-reset btn'
+          className='list-reset btn '
           key={result.id}
           onClick={() => handleClick(1, `${result.first_name} ${result.last_name}`, result.id)} 
           >{result.first_name} {result.last_name}</li>

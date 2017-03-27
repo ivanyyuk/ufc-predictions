@@ -44,7 +44,7 @@ app.use(function (err, req, res, next) {
 mongoose.Promise = require('bluebird');
 
 //listen
-mongoose.connect('mongodb://localhost/UFC')
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     server.listen(PORT, () => {
       console.log(`listening on ${PORT}`);

@@ -4,7 +4,7 @@ export default () => {
   return(
     <div className='container clearfix home col-9 mx-auto'>
       
-      <p> Welcome to my little project. This is a work in progress
+      <p>This is a work in progress
         and is far from done. As of now there are no actual predictions
         but that is the next thing to be updated.</p>
 

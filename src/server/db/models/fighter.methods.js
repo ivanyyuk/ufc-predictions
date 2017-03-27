@@ -3,6 +3,8 @@
 const Bluebird = require('Bluebird');
 const returnWinOrLose = require('../scrapingUtils/returnWinOrLose');
 const returnFightEndingMethod = require('../scrapingUtils/returnFightEndingMethod');
+const mutateFighter = require('../scrapingUtils/mutateFighter');
+const EventFight = require('./eventFight');
 
 
 module.exports = {
@@ -16,11 +18,9 @@ module.exports = {
         if (!vill) {
          return  this.model('Fighter').create({
             id: fight[`${villain}_id`],
-            name: {
-              first: fight[`${villain}_first_name`],
-              last: fight [`${villain}_last_name`],
+              first_name: fight[`${villain}_first_name`],
+              last_name: fight [`${villain}_last_name`],
               nickname: fight[`${villain}_nickname`],
-            },
           });
         }
         else return vill;
@@ -62,6 +62,25 @@ module.exports = {
     //since our fight db object looks like {fight: fight id , opponent: opponent ID}
     //we just filter the array to match 
     return this.fights.filter(fightObj => fightObj.fight.equals(fight._id)).length > 0;
+  },
+
+  assignFightingStats: function(cb) {
+    return EventFight.find({
+      $or: [
+        {fighter1_id: this.id}, {fighter2_id: this.id}
+      ]
+    })
+      .then(fightArray => {
+        Bluebird.each(fightArray, (fight) => { //arrow function keeps 'this' = fighter
+          let whichFighter = fight.fighter1_id === this.id ? 'fighter1' : 'fighter2';
+          let fighterToUpdate = this.toObject();
+          mutateFighter(whichFighter, fighterToUpdate, fight.toObject());
+          //console.log(this);
+          return this.update(fighterToUpdate);
+        });
+      })
+    //.then( (fighter) => console.log(`${fighter}`))
+      .catch(console.error);
   }
 
 
