@@ -1,6 +1,6 @@
 'use strict';
 
-const Bluebird = require('Bluebird');
+const Bluebird = require('bluebird');
 const returnWinOrLose = require('../scrapingUtils/returnWinOrLose');
 const returnFightEndingMethod = require('../scrapingUtils/returnFightEndingMethod');
 const mutateFighter = require('../scrapingUtils/mutateFighter');
