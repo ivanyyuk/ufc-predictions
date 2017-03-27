@@ -2,8 +2,6 @@ import React from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import store from './store';
 import App from './components/App';
 import Home from './components/Home';
@@ -45,7 +43,7 @@ const onFightLeave = () => {
 export default () => {
   return (
     <Provider store={store}>
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+      <MuiThemeProvider>
         <Router history={browserHistory}>
           <Route path='/' component={App}>
             <IndexRoute component={Home}/>
@@ -58,6 +56,6 @@ export default () => {
         </Router>
       </MuiThemeProvider>
     </Provider> 
-    );
-    };
+  );
+};
 

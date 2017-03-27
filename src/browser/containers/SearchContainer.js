@@ -65,7 +65,8 @@ class SearchContainer extends Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleClick={this.handleClick}
-        searchResults={this.props.searchResults}
+        f1Results = {this.props.searchResults.f1Results}
+        f2Results = {this.props.searchResults.f2Results}
         value1={this.state.value1}
         value2={this.state.value2}
         fighter1={this.props.searchResults.fighter1}

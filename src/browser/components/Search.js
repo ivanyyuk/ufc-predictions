@@ -1,14 +1,15 @@
 import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 
-export default ({handleChange, handleSubmit, searchResults, handleClick, value1, value2, fighter1, fighter2}) => {
+export default ({handleChange, handleSubmit, f1Results, handleClick, value1, value2, fighter1, fighter2}) => {
   return(
     <div className='container clearfix search flex flex-column center items-center col col-12 mb2'>
       <AutoComplete 
         hintText="Fighter 1"
-    dataSource={searchResults.f1Results}
-    dataSourceConfig={{text:'id', value:'id'}}
+    dataSource={f1Results}
+    dataSourceConfig={{text:'last_name', value:'id'}}
     onUpdateInput={e => handleChange(e,1)} 
+    filter={AutoComplete.noFilter}
   />
       <h2>PICK TWO FIGHTERS</h2>
       <h5>Once you have both, hit predict</h5>
