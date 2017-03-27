@@ -8,7 +8,8 @@ const _ = require('lodash');
 router.post('/', (req, res, next) => {
   const searchText = req.body.searchText
     .split(' ')
-    .map(elem => '(?=.*' + elem + ')');
+    //.map(elem => '(?=.*' + elem + ')');
+    .map(elem => `^${elem}`);
 
   const searchExp = searchText.map(exp => new RegExp(exp, 'ig'));
   const searches = [];

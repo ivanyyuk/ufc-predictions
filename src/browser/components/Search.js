@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({handleChange, handleSubmit, searchResults, handleClick}) => {
+export default ({handleChange, handleSubmit, searchResults, handleClick, value1, value2}) => {
   return(
     <div className='container clearfix search flex flex-column center items-center col col-12 mb2'>
       <h2>PICK TWO FIGHTERS</h2>
@@ -11,9 +11,9 @@ export default ({handleChange, handleSubmit, searchResults, handleClick}) => {
       >
         <label className='label'> Type first name, last name or both</label>
         <input type='text'
-          
           className='input sm-col-10'
-          placeholder='Fighter 1' onChange={handleChange} 
+          value={value1}
+          placeholder='Fighter 1' onChange={ e => handleChange(e,1)} 
         />
         <ul className={`${searchResults.f1Results.length ? '': 'hide'} center search-dropdown-menu flex flex-column`}>
     {
@@ -29,9 +29,10 @@ export default ({handleChange, handleSubmit, searchResults, handleClick}) => {
   </ul>
         <input type='text' 
           className='input block sm-col-10'
-          placeholder='Fighter 2' onChange={handleChange} 
+          placeholder='Fighter 2' onChange={e => handleChange(e,2)} 
+          value={value2}
         />
-        <ul className={`${searchResults.f2Results.length ? '': 'hide'} center search-dropdown-menu flex flex-column`}>
+        <ul className={`${searchResults.f2Results.length ? '': 'hide'} center search-dropdown-menu flex flex-column p2`}>
     {
       searchResults.f2Results.map(result => (
         <li

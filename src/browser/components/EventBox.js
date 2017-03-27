@@ -31,7 +31,9 @@ const EventBox = ({name, tagLine, image, date, id, fights, faded, toggleFade}) =
               fights &&
                 fights.map(fight => <li className='my1'
                   key={fight.fighter1.id}>
-                  <Link className='navy' to='#'>{fight.fighter1.name} vs {fight.fighter2.name}</Link></li>)
+                  <Link className='navy'
+                    to={`/fight/${fight.fighter1.id}/${fight.fighter2.id}`}
+                >{fight.fighter1.name} vs {fight.fighter2.name}</Link></li>)
             }
           </ul>
         </div>

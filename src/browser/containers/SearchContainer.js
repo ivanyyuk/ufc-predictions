@@ -12,6 +12,11 @@ class SearchContainer extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.timer = null;
+
+    this.state = {
+      value1: '',
+      value2: ''
+    };
   }
 
   handleSubmit(evt) {
@@ -20,10 +25,16 @@ class SearchContainer extends Component {
 
   handleClick(index, name, id) {
     this.props.setFighter(index, name, id);
+    let stateObj = {};
+    stateObj[`value${index}`] = name;
+    this.setState(stateObj);
+
   }
 
-  handleChange(evt) {
-    const index = evt.target.placeholder.slice(-1);
+  handleChange(evt, index) {
+    let stateObj = {};
+    stateObj[`value${index}`] = evt.target.value;
+    this.setState(stateObj);
     const value = evt.target.value;
     const debounceTimer = 500;
     const minLength = 2;
@@ -51,6 +62,8 @@ class SearchContainer extends Component {
         handleChange={this.handleChange}
         handleClick={this.handleClick}
         searchResults={this.props.searchResults}
+        value1={this.state.value1}
+        value2={this.state.value2}
       />
     );
   }
