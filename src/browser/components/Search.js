@@ -20,25 +20,19 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
       openOnFocus={true}
       filter={AutoComplete.noFilter}
     />
-        <input type='text' 
-          className='input block sm-col-10'
-          placeholder='Fighter 2' onChange={e => handleChange(e,2)} 
-          value={value2}
-        />
-        <ul className={`${searchResults.f2Results.length ? '': 'hide'} center search-dropdown-menu flex flex-column p2`}>
-    {
-      searchResults.f2Results.map(result => (
-        <li
-          className='list-reset btn'
-          key={result.id}
-          onClick={() => handleClick(2,`${result.first_name} ${result.last_name}`, result.id)} 
-          >{result.first_name} {result.last_name}</li>
 
-      ))
-    }
-  </ul>
+    <br />
 
-      <br />
+     <AutoComplete 
+      dataSource={searchResults.f2Results}
+      hintText="Fighter 2"
+      dataSourceConfig={ {text: 'name', value: 'id'} }
+      onUpdateInput={value => handleChange(value, 2)}
+      openOnFocus={true}
+      filter={AutoComplete.noFilter}
+    />
+
+  <br/>
         <input
           type="submit"
           className='block btn btn-outline center'
