@@ -25,7 +25,12 @@ router.post('/', (req, res, next) => {
       .then(found => searches.push(found));
   })
     .then(() => _.flatten(searches))
-    .then(flatSearch => res.json(_.uniqBy(flatSearch, 'id')))
+    .then(searches => searches.map(search => ({
+      name: `${search.first_name} ${search.last_name}`,
+      id: search.id
+    })
+    ))
+    .then(searchData => res.json(_.uniqBy(searchData, 'id')))
     .catch(next);
 
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import AutoComplete from 'material-ui/AutoComplete';
 
 export default ({handleChange, handleSubmit, searchResults, handleClick, value1, value2, fighter1, fighter2}) => {
   return(
@@ -11,42 +12,31 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
       >
         <label className='label'> Type first name, last name or both. <br/>
       Only 3 letters needed to start search.</label>
-        <input type='text'
-          className='input sm-col-10'
-          value={value1}
-          placeholder='Fighter 1' onChange={ e => handleChange(e,1)} 
-        />
-        <ul className={`${searchResults.f1Results.length ? '': 'hide'} center search-dropdown-menu flex flex-column`}>
-    {
-      searchResults.f1Results.map(result => (
-        <li
-          className='list-reset btn '
-          key={result.id}
-          onClick={() => handleClick(1, `${result.first_name} ${result.last_name}`, result.id)} 
-          >{result.first_name} {result.last_name}</li>
+    <AutoComplete 
+      dataSource={searchResults.f1Results}
+      hintText="Fighter 1"
+      dataSourceConfig={ {text: 'name', value: 'name'} }
+      onUpdateInput={(value, searches, method) => handleChange(value, searches,method ,1)}
+      onNewRequest={(val,index) => handleClick(val, index, 1)}
+      openOnFocus={!fighter1.id}
+      filter={AutoComplete.noFilter}
+    />
 
-      ))
-    }
-  </ul>
-        <input type='text' 
-          className='input block sm-col-10'
-          placeholder='Fighter 2' onChange={e => handleChange(e,2)} 
-          value={value2}
-        />
-        <ul className={`${searchResults.f2Results.length ? '': 'hide'} center search-dropdown-menu flex flex-column p2`}>
-    {
-      searchResults.f2Results.map(result => (
-        <li
-          className='list-reset btn'
-          key={result.id}
-          onClick={() => handleClick(2,`${result.first_name} ${result.last_name}`, result.id)} 
-          >{result.first_name} {result.last_name}</li>
+    <br />
 
-      ))
-    }
-  </ul>
+  <AutoComplete 
+      dataSource={searchResults.f2Results}
+      hintText="Fighter 2"
+      dataSourceConfig={ {text: 'name', value: 'name'} }
+      onUpdateInput={(value, searches, method) => handleChange(value, searches,method ,2)}
+      onNewRequest={(val,index) => handleClick(val, index, 2)}
+      openOnFocus={!fighter2.id}
+      filter={AutoComplete.noFilter}
+    />
 
-      <br />
+
+
+  <br/>
         <input
           type="submit"
           className='block btn btn-outline center'
@@ -56,3 +46,4 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
     </div>
   );
 };
+
