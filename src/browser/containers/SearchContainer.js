@@ -14,10 +14,10 @@ class SearchContainer extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.timer = null;
 
-    this.state = {
-      value1: '',
-      value2: ''
-    };
+    //this.state = {
+      //value1: '',
+      //value2: ''
+    //};
   }
 
   handleSubmit(evt, id1, id2) {
@@ -27,27 +27,31 @@ class SearchContainer extends Component {
     }
   }
 
-  handleClick(index, name, id) {
-    this.props.setFighter(index, name, id);
-    let stateObj = {};
-    stateObj[`value${index}`] = name;
-    this.setState(stateObj);
+  handleClick(fighter, index, formIndex ) {
+    //index is -1 when user hits enter.  we want to disallow that
+    //only search when user picks result
+    console.log(fighter, index, formIndex);
+    if (index > -1)
+      this.props.setFighter(formIndex, fighter.name, fighter.id);
 
   }
 
-  handleChange(value, index) {
-    let stateObj = {};
-    stateObj[`value${index}`] = value;
-    this.setState(stateObj);
+  handleChange(value, searchRes, method ,index) {
+    //ok so when clicked on a result method is
+    //{source: 'touchTap'}
+    //when typing stuff method is {source: 'change'}
+    //so when we touchtap we dont't want to search anymore
+    if (method.source==='change') {
     const debounceTimer = 500;
     const minLength = 2;
     clearTimeout(this.timer);
-    if (value.length === 0) this.props.clearSearches(index);
-    this.timer = setTimeout(() => {
-      if (value.length > minLength) {
-        this.triggerFetch(value, index);
-      }
-    }, debounceTimer);
+      if (value.length === 0) this.props.clearSearches(index);
+      this.timer = setTimeout(() => {
+        if (value.length > minLength) {
+          this.triggerFetch(value, index);
+        }
+      }, debounceTimer);
+    }
   }
 
   triggerFetch(searchText, index) {
@@ -65,8 +69,6 @@ class SearchContainer extends Component {
         handleChange={this.handleChange}
         handleClick={this.handleClick}
         searchResults={this.props.searchResults}
-        value1={this.state.value1}
-        value2={this.state.value2}
         fighter1={this.props.searchResults.fighter1}
         fighter2={this.props.searchResults.fighter2}
       />

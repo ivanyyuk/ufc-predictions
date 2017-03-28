@@ -15,22 +15,26 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
     <AutoComplete 
       dataSource={searchResults.f1Results}
       hintText="Fighter 1"
-      dataSourceConfig={ {text: 'name', value: 'id'} }
-      onUpdateInput={value => handleChange(value, 1)}
-      openOnFocus={true}
+      dataSourceConfig={ {text: 'name', value: 'name'} }
+      onUpdateInput={(value, searches, method) => handleChange(value, searches,method ,1)}
+      onNewRequest={(val,index) => handleClick(val, index, 1)}
+      openOnFocus={!fighter1.id}
       filter={AutoComplete.noFilter}
     />
 
     <br />
 
-     <AutoComplete 
+  <AutoComplete 
       dataSource={searchResults.f2Results}
       hintText="Fighter 2"
-      dataSourceConfig={ {text: 'name', value: 'id'} }
-      onUpdateInput={value => handleChange(value, 2)}
-      openOnFocus={true}
+      dataSourceConfig={ {text: 'name', value: 'name'} }
+      onUpdateInput={(value, searches, method) => handleChange(value, searches,method ,2)}
+      onNewRequest={(val,index) => handleClick(val, index, 2)}
+      openOnFocus={!fighter2.id}
       filter={AutoComplete.noFilter}
     />
+
+
 
   <br/>
         <input
