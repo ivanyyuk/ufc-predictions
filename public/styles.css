@@ -5,12 +5,12 @@ body {
   background-color: #e4e4e4;
 }
 
-/** {*/
-  /*box-sizing: border-box; }*/
+* {
+  box-sizing: border-box; }
 
 @media only screen and (max-width: 480px) {
     h1 {
-        font-size: 24px;
+        font-size: 20px !important;
     }
 }
 
@@ -54,28 +54,42 @@ a:hover {
             color: #111;
         }
 
-.event-info {
+.event-info  ul {
+  overflow-y: scroll;
+  max-height: 33vw;
 }
 
 .single-fight{
-  margin-top: 6vw;
+  /*margin-top: 6vw;*/
 }
 
 .home{
-  margin-top: 9vw;
-}
-.event-row:nth-of-type(1){
-  margin-top: 6vw;
+  /*margin-top: 9vw;*/
 }
 
-.event-row:nth-of-type(odd){
-  background-color: #e4e4e4;
+.event-container:nth-of-type(1){
+  /*margin-top: 6vw;*/
+  padding-top:inherit;
 }
 
-.event-row:nth-of-type(even){
+.event-container:nth-of-type(odd){
+  /*background-color: black;*/
+}
+
+.event-container:nth-of-type(even){
   /*background-color: #6a8a82;*/
   background-color: #44c7f4;
 }
+
+.event-container{
+display: flex;
+flex-flow: row;
+flex-wrap: nowrap;
+margin-bottom: 0px;
+padding-top: 1.9rem;
+}
+
+
 
 .event-card {
   -webkit-transition: width 0.3s ease, margin 0.3s ease;
@@ -104,6 +118,9 @@ a:hover {
 }
 
 
+.white-text-black-border {
+     text-shadow: 1px 1px 1px black !important;
+}
 
 .versus-page a{
   text-decoration: none;

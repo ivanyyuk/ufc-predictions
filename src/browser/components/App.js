@@ -4,9 +4,9 @@ import Navbar from './Navbar';
 
 export default ({ children }) => {
   return (
-    <div className='container'>
+    <div className=''>
       <Navbar/>
-      <div className='main container clearfix block mt4 relative '>
+      <div className='main'>
         {children}
       </div>
     </div>
