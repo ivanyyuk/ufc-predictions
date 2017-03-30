@@ -2,23 +2,23 @@ body {
   margin: 0 auto;
   padding: 0;
   /*font-family: sans-serif;*/
+  background-color: black;
+}
+
+#root {
   background-color: #e4e4e4;
+  min-height: 100vh;
 }
 
 * {
   box-sizing: border-box; }
 
-@media only screen and (max-width: 500px) {
-    h1 {
-        font-size: 30px !important;
+@media (max-width: 700px) {
+  .logo h1 {
+        font-size: 24px !important;
     }
 }
 
-@media only screen and (max-width: 700px) {
-    h1 {
-        font-size: 30px !important;
-    }
-}
 
 img {
   max-width: 100%;
@@ -39,7 +39,10 @@ a:hover {
 
 
 .logo {
+  padding-top: 0.1rem;
   margin-bottom: 0px;
+  color: white;
+  font-family: sans-serif; 
   /*text-decoration: none;*/
   /*background-color: #FFB700;*/
   /*margin:0;*/
@@ -48,6 +51,7 @@ a:hover {
   /*left: 0;*/
   /*width: 100%*/
 }
+
 
 .nav-buttons{
   display: flex;
