@@ -12,6 +12,7 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
       >
         <label className='label'> Type first name, last name or both. <br/>
       Only 3 letters needed to start search.</label>
+    <br/>
     <AutoComplete 
       dataSource={searchResults.f1Results}
       hintText="Fighter 1"

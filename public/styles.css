@@ -13,12 +13,6 @@ body {
 * {
   box-sizing: border-box; }
 
-@media (max-width: 700px) {
-  .logo h1 {
-        font-size: 24px !important;
-    }
-}
-
 
 img {
   max-width: 100%;
@@ -52,28 +46,14 @@ a:hover {
   /*width: 100%*/
 }
 
+.logo h1 {
+  font-size: 30px;
+}
 
 .nav-buttons{
   display: flex;
   flex-flow: row;
   flex-wrap: nowrap;
-}
-
-.single-nav-button {
-  
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-    display: inline-block;
-    line-height: 1.125rem;
-    padding: .5rem 1rem;
-    margin: 0;
-    height: auto;
-    border: 1px solid transparent;
-    vertical-align: middle;
-    -webkit-appearance: none;
-    color: inherit;
-    background-color: transparent;
 }
 
 
