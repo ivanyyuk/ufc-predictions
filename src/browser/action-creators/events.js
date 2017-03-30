@@ -2,6 +2,7 @@ export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
 export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 export const FADE_IN = 'FADE_IN';
 export const FADE_OUT = 'FADE_OUT';
+export const TOGGLE_FIGHTS = 'TOGGLE_FIGHTS';
 
 export const receiveEvents = (events) => {
   const action = {
@@ -22,6 +23,14 @@ export const fadeIn = (eventId) => {
 export const fadeOut = (eventId) => {
   const action = {
     type: FADE_OUT,
+    eventId
+  };
+  return action;
+};
+
+export const toggleFights = (eventId) => {
+  const action = { 
+    type: TOGGLE_FIGHTS,
     eventId
   };
   return action;
