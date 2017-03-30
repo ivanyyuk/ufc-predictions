@@ -8,9 +8,15 @@ body {
 * {
   box-sizing: border-box; }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 500px) {
     h1 {
-        font-size: 20px !important;
+        font-size: 30px !important;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    h1 {
+        font-size: 30px !important;
     }
 }
 
@@ -33,6 +39,7 @@ a:hover {
 
 
 .logo {
+  margin-bottom: 0px;
   /*text-decoration: none;*/
   /*background-color: #FFB700;*/
   /*margin:0;*/
@@ -42,8 +49,29 @@ a:hover {
   /*width: 100%*/
 }
 
-.logo div {
+.nav-buttons{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
 }
+
+.single-nav-button {
+  
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.125rem;
+    padding: .5rem 1rem;
+    margin: 0;
+    height: auto;
+    border: 1px solid transparent;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    color: inherit;
+    background-color: transparent;
+}
+
 
 .search-dropdown-menu {
             background-color: white;
@@ -62,7 +90,7 @@ a:hover {
   background-color:#fff;
   min-height: 33vw;
   max-height: 33vw;
-  
+  box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
 
