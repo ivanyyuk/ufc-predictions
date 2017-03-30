@@ -2,7 +2,7 @@ import React from 'react';
 
 export default () => {
   return(
-    <div className='container clearfix home col-9 mx-auto'>
+    <div className='container flow-text'>
       
       <p>This is a work in progress
         and is far from done. As of now there are no actual predictions
