@@ -28,11 +28,20 @@ a:hover {
 
 
 .search {
-  margin-top: 5vw;
+  /*margin-top: 5vw;*/
 }
 
 .search-input {
   margin-bottom: 2rem;
+}
+
+.search-input:nth-child(1){
+  margin-top: 2rem;
+}
+
+/*for autocomple overflow to see all options*/
+.predict-button {
+  margin-bottom: 150px;
 }
 
 
@@ -200,6 +209,7 @@ padding-top: 1.9rem;
 .fight-splitter {
   width:80%;
 }
+
 
 .loader {
   height: 28px;
