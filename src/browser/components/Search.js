@@ -3,8 +3,8 @@ import AutoComplete from 'material-ui/AutoComplete';
 
 export default ({handleChange, handleSubmit, searchResults, handleClick, value1, value2, fighter1, fighter2}) => {
   return(
-    <div className='container clearfix search flex flex-column center items-center col col-12 mb2'>
-      <h2>PICK TWO FIGHTERS</h2>
+    <div className='search center col col-12 mb2'>
+      <h4 className='flex-flow'>PICK TWO FIGHTERS</h4>
       <h5>Once you have both, hit predict</h5>
       <br />
       <form onSubmit={e => handleSubmit(e,fighter1.id,fighter2.id)}
@@ -14,6 +14,7 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
       Only 3 letters needed to start search.</label>
     <br/>
     <AutoComplete 
+      className='search-input'
       dataSource={searchResults.f1Results}
       hintText="Fighter 1"
       dataSourceConfig={ {text: 'name', value: 'name'} }
@@ -26,6 +27,7 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
     <br />
 
   <AutoComplete 
+      className='search-input' 
       dataSource={searchResults.f2Results}
       hintText="Fighter 2"
       dataSourceConfig={ {text: 'name', value: 'name'} }

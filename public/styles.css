@@ -31,6 +31,10 @@ a:hover {
   margin-top: 5vw;
 }
 
+.search-input {
+  margin-bottom: 2rem;
+}
+
 
 .logo {
   padding-top: 0.1rem;
@@ -79,7 +83,14 @@ a:hover {
 
 
 .single-fight{
+  display: flex;
+  flex-flow: row;
+  /*margin: 2px;*/
   /*margin-top: 6vw;*/
+}
+
+.single-fight .card {
+  margin:2px;
 }
 
 .home{
@@ -180,10 +191,10 @@ padding-top: 1.9rem;
 /*float:right;*/
 /*}*/
 
-/*.fighter {*/
+.fighter {
 /*display:inline-block;*/
 /*float:left;*/
-/*}*/
+}
 
 .loader {
   height: 28px;
