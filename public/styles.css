@@ -83,15 +83,16 @@ a:hover {
 
 
 .single-fight{
-  display: flex;
-  flex-flow: row;
+  /*display: flex;*/
+  /*flex-flow: row;*/
+  /*flex-wrap: nowrap;*/
   /*margin: 2px;*/
   /*margin-top: 6vw;*/
 }
 
-.single-fight .card {
-  margin:2px;
-}
+/*.single-fight .card {*/
+  /*margin:2px;*/
+/*}*/
 
 .home{
   /*margin-top: 9vw;*/
@@ -194,6 +195,10 @@ padding-top: 1.9rem;
 .fighter {
 /*display:inline-block;*/
 /*float:left;*/
+}
+
+.fight-splitter {
+  width:80%;
 }
 
 .loader {

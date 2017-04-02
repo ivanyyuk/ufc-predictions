@@ -19,8 +19,9 @@ export default ({ currentFight }) => {
             imgUrl={currentFight.fighter2.image_url}
           />
         </div>
+        <div className='fight-splitter hide-on-med-and-down col l1'></div>
 
-      <div className='card col s12 m6 center-align'>
+      <div className='card col s12 l5 center-align'>
         <div className='loader'></div><span className='center-align'>Loading ... </span>
       </div>
     </div>
