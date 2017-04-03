@@ -28,8 +28,6 @@ export default function (state = initialEventsState, action) {
       newState[index].showFights = !newState[index].showFights;
       return newState;
 
-
-
       default:
       return state;
   }
