@@ -12,8 +12,8 @@ I have parsed the [UFC data api](http://ufc-data-api.ufc.com/api/v3/iphone) to g
 
 This is built with Node, Express and MongoDb on the backend, and React/Redux on the front-end. 
 
-Styling done with [http://materializecss.com/](MaterializeCss)
+Styling done with [Materialize CSS](http://materializecss.com/)
 
-Also used AutoComplete component from [http://www.material-ui.com/](Material-UI)
+Also used AutoComplete component from [Material-UI](http://www.material-ui.com/)
 
 
