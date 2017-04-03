@@ -44,20 +44,5 @@ class EventsContainer extends Component {
 
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventsContainer);
-
-
-        events={this.props.events}
-        fadeIn={this.props.fadeIn}
-        fadeOut={this.props.fadeOut}
-        toggleFights={this.props.toggleFights} 
-      />
-    );
-  }
-
-}
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(EventsContainer);
 
