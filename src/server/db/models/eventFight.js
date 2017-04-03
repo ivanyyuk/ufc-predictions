@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { returnWinOrLoss } = require('./fight.methods');
 
 const fightSchema = new Schema({
   id: Number,
@@ -95,6 +96,8 @@ const fightSchema = new Schema({
     ]
   }
 });
+
+fightSchema.statics.returnWinOrLoss = returnWinOrLoss;
 
 const Fight = mongoose.model('Fight', fightSchema);
 
