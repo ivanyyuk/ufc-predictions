@@ -5,6 +5,26 @@ import axios from 'axios';
 import { receiveSearchResults, clearSearchResults, setFighter } from '../action-creators/search';
 import { browserHistory } from 'react-router';
 
+const mapStateToProps = (state, ownProps) => ({
+  searchResults: state.searchResults,
+  fighter1: state.fighter1,
+  fighter2: state.fighter2
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  receiveSearch: (results, index) => {
+    dispatch(receiveSearchResults(results, index));
+  },
+  clearSearches: (index) => {
+    dispatch(clearSearchResults(index));
+  },
+  setFighter: (index, name, id) => {
+    dispatch(setFighter(index, name, id));
+  }
+});
+
+
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -30,7 +50,6 @@ class SearchContainer extends Component {
   handleClick(fighter, index, formIndex ) {
     //index is -1 when user hits enter.  we want to disallow that
     //only search when user picks result
-    console.log(fighter, index, formIndex);
     if (index > -1)
       this.props.setFighter(formIndex, fighter.name, fighter.id);
 
@@ -75,28 +94,6 @@ class SearchContainer extends Component {
     );
   }
 };
-
-const mapStateToProps = (state, ownProps) => ({
-  searchResults: state.searchResults,
-  fighter1: state.fighter1,
-  fighter2: state.fighter2
-
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    receiveSearch: (results, index) => {
-      dispatch(receiveSearchResults(results, index));
-    },
-    clearSearches: (index) => {
-      dispatch(clearSearchResults(index));
-    },
-    setFighter: (index, name, id) => {
-      dispatch(setFighter(index, name, id));
-    }
-  };
-};
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

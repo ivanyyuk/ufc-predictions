@@ -1,5 +1,5 @@
-import { RECEIVE_EVENTS, FADE_IN, FADE_OUT } from '../action-creators/events';
-import { addFadeProperty } from '../utils';
+import { RECEIVE_EVENTS, FADE_IN, FADE_OUT, TOGGLE_FIGHTS } from '../action-creators/events';
+import { addFadeAndToggleProperty } from '../utils';
 import _ from 'lodash';
 
 const initialEventsState = [];
@@ -11,7 +11,7 @@ export default function (state = initialEventsState, action) {
   switch (action.type) {
 
     case RECEIVE_EVENTS:
-      return [...addFadeProperty(action.events)];
+      return [...addFadeAndToggleProperty(action.events)];
 
     case FADE_IN:
       index = _.findIndex(state, event => event.id === action.eventId);
@@ -23,7 +23,16 @@ export default function (state = initialEventsState, action) {
       newState[index].faded = false;
       return newState;
 
-    default:
+      case TOGGLE_FIGHTS:
+      index = _.findIndex(state, event => event.id === action.eventId);
+      newState[index].showFights = !newState[index].showFights;
+      return newState;
+
+
+
+      default:
       return state;
   }
+}
+
 }

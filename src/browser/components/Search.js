@@ -1,18 +1,26 @@
 import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 
+const autoCompleteStyle = {
+  maxHeight:200,
+  overflow: 'auto'
+};
+
 export default ({handleChange, handleSubmit, searchResults, handleClick, value1, value2, fighter1, fighter2}) => {
   return(
-    <div className='container clearfix search flex flex-column center items-center col col-12 mb2'>
-      <h2>PICK TWO FIGHTERS</h2>
+    <div className='search center col col-12 mb2'>
+      <h4 className=''>PICK TWO FIGHTERS</h4>
       <h5>Once you have both, hit predict</h5>
       <br />
       <form onSubmit={e => handleSubmit(e,fighter1.id,fighter2.id)}
-        className='xs-col-12 md-col-6 center' 
+        className='center' 
       >
         <label className='label'> Type first name, last name or both. <br/>
       Only 3 letters needed to start search.</label>
+    <br/>
     <AutoComplete 
+      className='search-input'
+      listStyle={autoCompleteStyle}
       dataSource={searchResults.f1Results}
       hintText="Fighter 1"
       dataSourceConfig={ {text: 'name', value: 'name'} }
@@ -25,6 +33,8 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
     <br />
 
   <AutoComplete 
+      className='search-input' 
+      listStyle={autoCompleteStyle}
       dataSource={searchResults.f2Results}
       hintText="Fighter 2"
       dataSourceConfig={ {text: 'name', value: 'name'} }
@@ -39,7 +49,7 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
   <br/>
         <input
           type="submit"
-          className='block btn btn-outline center'
+          className='predict-button btn'
           value="Predict"
         />
       </form>

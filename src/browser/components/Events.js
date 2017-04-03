@@ -2,7 +2,7 @@ import React from 'react';
 import EventBox from '../components/EventBox';
 
 
-export default ({events, fadeIn, fadeOut}) => {
+export default ({events, fadeIn, fadeOut, toggleFights}) => {
   return (
     <div className='events'>
       <div>
@@ -18,6 +18,8 @@ export default ({events, fadeIn, fadeOut}) => {
               faded={event.faded}
               fadeIn={fadeIn}
               fadeOut={fadeOut}
+              showFights={event.showFights}
+              toggleFights={toggleFights}
               />
           ))
       }

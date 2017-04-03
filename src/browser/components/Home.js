@@ -2,7 +2,7 @@ import React from 'react';
 
 export default () => {
   return(
-    <div className='container clearfix home col-9 mx-auto'>
+    <div className='container flow-text'>
       
       <p>This is a work in progress
         and is far from done. As of now there are no actual predictions
@@ -22,8 +22,9 @@ export default () => {
   <br/>
   <p>Check out the source code <a href="https://github.com/ivanyyuk/ufc-predictions"> here.</a></p>
   <br/> 
-  <p className=''>Built with React, Redux, Node.js, MongoDB, and 
-    <a href='http://basscss.com'> Basscss </a>.
+  <p className=''>Built with React, Redux, Node.js, MongoDB,  
+    <a href='http://www.material-ui.com/#/components/auto-complete'> Material-UI</a>,
+    and <a href='http://materializecss.com/'>Materialize CSS</a>.
       All pictures and fight data propery of the UFC.
     </p>
     </div>
