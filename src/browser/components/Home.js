@@ -9,11 +9,13 @@ export default () => {
         but that is the next thing to be updated.</p>
 
       <p>Click on upcoming events to see what's coming up.</p>
-      <p>If you are on a narrow display click the events to be taken
-        to all the fights for that event.</p>
       <p>If on a wide display (desktop) you can hover over each event and
         see the fights on the right. </p>
       <p>Or go to the search page and choose your own fighters. </p>
+
+      <p>Note: If you are on limited data be warned that the pictures used
+        here are fairly large and browsing this site can use 10MB or more. 
+      </p>
 
       <p>This is only as accurate as the  
       <a href='http://ufc-data-api.ufc.com/api/v3/iphone/'> UFC Data API</a> that
