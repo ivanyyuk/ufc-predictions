@@ -14,10 +14,6 @@ const nameStringFromOpponentObject = require('./nameStringFromOpponentObject');
 //fighter1_id and fighter2_id from ufc api which is number not bson
 
 module.exports = (fighter1Id, fighter2Id) => {
-  //these are being passed as strings from our req.params most of the time
-  //maybe change it there instead of here
-  fighter1Id = Number(fighter1Id);
-  fighter2Id = Number(fighter2Id);
 
   const opponentHashTable = {};
   const commonOpponents = {};

@@ -3,13 +3,11 @@ import axios from 'axios';
 export const RECEIVE_FIGHT = 'RECEIVE_FIGHT';
 export const CLEAR_FIGHT = 'CLEAR_FIGHT';
 
-export const receiveFight = ({fighter1, fighter2, fights, result}) => {
+export const receiveFight = ({fighter1, fighter2}) => {
   const action = {
     type: RECEIVE_FIGHT,
     fighter1,
-    fighter2,
-    fights,
-    result
+    fighter2
   };
   return action;
 };
