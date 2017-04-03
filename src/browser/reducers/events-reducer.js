@@ -34,3 +34,5 @@ export default function (state = initialEventsState, action) {
       return state;
   }
 }
+
+}
