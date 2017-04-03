@@ -30,7 +30,6 @@ class SearchContainer extends Component {
   handleClick(fighter, index, formIndex ) {
     //index is -1 when user hits enter.  we want to disallow that
     //only search when user picks result
-    console.log(fighter, index, formIndex);
     if (index > -1)
       this.props.setFighter(formIndex, fighter.name, fighter.id);
 
