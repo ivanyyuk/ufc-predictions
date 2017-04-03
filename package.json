@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack -w & nodemon --watch src/server -e js,html src/server/start.js",
     "test": "./node_modules/.bin/mocha server/**/*.test.js --reporter spec",
-    "seed": "node ./bin/seed"
+    "seed": "node ./bin/seed",
+    "build": "webpack -p",
+    "server": "node src/server/start.js"
   },
   "dependencies": {
     "axios": "^0.15.3",
