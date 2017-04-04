@@ -65,7 +65,7 @@ module.exports = (fighter1Id, fighter2Id) => {
       else result = 'draw';
 
       return {
-        fights: fightsArray,
+        commonOpponents: fightsArray,
         result
       };
     })

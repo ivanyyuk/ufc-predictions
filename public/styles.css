@@ -1,5 +1,4 @@
-body {
-  margin: 0 auto;
+body { margin: 0 auto;
   padding: 0;
   /*font-family: sans-serif;*/
   background-color: black;
@@ -44,6 +43,9 @@ a:hover {
   margin-bottom: 150px;
 }
 
+.common-opponents-container {
+  margin-top: 2rem;
+}
 
 .logo {
   padding-top: 0.1rem;
@@ -211,16 +213,3 @@ padding-top: 1.9rem;
 }
 
 
-.loader {
-  height: 28px;
-  width: 28px;
-  animation: rotate 0.8s infinite linear;
-  border: 8px solid #fff;
-  border-right-color: transparent;
-  border-radius: 50%;
-}
-
-@keyframes rotate {
-  0%    { transform: rotate(0deg); }
-  100%  { transform: rotate(360deg); }
-}

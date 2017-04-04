@@ -49,7 +49,7 @@ export default ({handleChange, handleSubmit, searchResults, handleClick, value1,
   <br/>
         <input
           type="submit"
-          className='predict-button btn'
+          className={`predict-button btn ${fighter1.id && fighter2.id ? '' : 'disabled'}`}
           value="Predict"
         />
       </form>

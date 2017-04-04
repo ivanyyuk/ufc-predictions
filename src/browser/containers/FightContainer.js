@@ -23,7 +23,10 @@ class SingleFightContainer extends Component {
   render() {
     return (
       <SingleFight 
-      currentFight={this.props.currentFight} />
+        currentFight={this.props.currentFight}
+         id1={this.props.params.id1}
+         id2={this.props.params.id2}
+        />
     );
   }
 }

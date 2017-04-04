@@ -12,6 +12,7 @@ import { receiveEvents } from './action-creators/events.js';
 import { getEventById } from './action-creators/single-event';
 import { clearSearchResults } from './action-creators/search';
 import { getFightInfo, clearFight } from './action-creators/fight';
+import { clearPrediction } from './action-creators/prediction';
 import axios from 'axios';
 
 const onSearchEnter = () => {
@@ -20,6 +21,7 @@ const onSearchEnter = () => {
 
 const onFightLeave = () => {
   store.dispatch(clearFight());
+  store.dispatch(clearPrediction());
 };
 
 export default () => {
