@@ -3,8 +3,8 @@ import Fighter from '../components/Fighter';
 import PredictionContainer from '../containers/PredictionContainer.js';
 
 export default ({ currentFight, id1, id2 }) => {
-  const record1 = `${currentFight.fighter1.record.wins.total}-${currentFight.fighter1.record.losses.total}-${currentFight.fighter1.record.draws.total}`;
-  const record2 = `${currentFight.fighter2.record.wins.total}-${currentFight.fighter2.record.losses.total}-${currentFight.fighter2.record.draws.total}`;
+  const record1 = `${currentFight.fighter1.record.wins.total || 0}-${currentFight.fighter1.record.losses.total || 0}-${currentFight.fighter1.record.draws.total || 0}`;
+  const record2 = `${currentFight.fighter2.record.wins.total || 0}-${currentFight.fighter2.record.losses.total || 0}-${currentFight.fighter2.record.draws.total || 0}`;
   return ( 
     <div className='single-fight container'>
       <div className='row'>
