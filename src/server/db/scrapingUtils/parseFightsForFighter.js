@@ -33,7 +33,7 @@ const parseAllEventsForFighter = (fighterId) => {
         $or: [
           {fighter1_id: fighterId}, {fighter2_id: fighterId}
         ],
-        ending_time: {$exists: true} //no ending_time means future event
+        $where: 'this.ending_time.length > 0' //no ending_time means future event
       });
     })
     .then(fights => {
