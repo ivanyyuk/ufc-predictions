@@ -7,7 +7,14 @@ const mutateFighter = require('../scrapingUtils/mutateFighter');
 const EventFight = require('./eventFight');
 
 
+//didnt use ES6 declaration in to keep this context to model
 module.exports = {
+  getFightersById: function(...fighterIds) {
+    return Bluebird.map(fighterIds, (fId)  => {
+      return this.findOne({ id: fId });
+    })
+      .catch(console.error);
+  },
   populateFights: function(index, fight) {
     let hero = index === 1 ? 'fighter1' : 'fighter2';
     let villain = index === 1? 'fighter2' : 'fighter1';
@@ -16,11 +23,11 @@ module.exports = {
         //if villain not in db , create it
         //old fighters don't show up in ufc db
         if (!vill) {
-         return  this.model('Fighter').create({
+          return  this.model('Fighter').create({
             id: fight[`${villain}_id`],
-              first_name: fight[`${villain}_first_name`],
-              last_name: fight [`${villain}_last_name`],
-              nickname: fight[`${villain}_nickname`],
+            first_name: fight[`${villain}_first_name`],
+            last_name: fight [`${villain}_last_name`],
+            nickname: fight[`${villain}_nickname`],
           });
         }
         else return vill;
@@ -44,7 +51,7 @@ module.exports = {
             key =`record.draws.total`;
             value = this.record.draws.total;
           }
-          
+
           obj[key] = value;
           return this.update({
             $set: obj,

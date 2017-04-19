@@ -2,7 +2,11 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { assignFightingStats, populateFights, checkIfFightAlreadyStored } = require('./fighter.methods');
+const { assignFightingStats,
+  populateFights,
+  checkIfFightAlreadyStored ,
+  getFightersById
+} = require('./fighter.methods');
 
 
 const  fighterSchema = new Schema({
@@ -53,6 +57,8 @@ const  fighterSchema = new Schema({
   title_holder: {type: Boolean},
   image_url: {type: String}
 });
+
+fighterSchema.statics.getFightersById = getFightersById;
 
 fighterSchema.methods.populateFights = populateFights;
 fighterSchema.methods.checkIfFightAlreadyStored = checkIfFightAlreadyStored;
